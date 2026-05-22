@@ -320,19 +320,25 @@
           </div>
         </div>
 
-        <!-- その他エリア (Contact / SNS) -->
+        <!-- その他エリア (Contact / SNS / BBS) -->
         <div class="md:col-span-2 mt-4 flex flex-wrap justify-center gap-6 md:gap-10">
           
           <!-- Contact -->
           <a href="#" onclick="event.preventDefault(); openModal('contactModal')" class="group relative w-36 h-36 md:w-44 md:h-44 bg-[var(--kaga-kusa)] border-4 border-[var(--color-text)] flex flex-col justify-center items-center hover:bg-[var(--color-text)] transition-colors duration-300 shadow-[4px_4px_0px_var(--kaga-ai)] tech-border transform rotate-2">
             <h3 class="font-fude text-2xl font-bold mb-2 text-center w-full border-y border-dashed border-white text-white group-hover:text-[var(--kaga-kusa)] py-1">文通</h3>
-            <span class="mt-4 font-tech text-xs tracking-widest border-2 border-[var(--color-text)] px-3 py-1 font-bold bg-[var(--color-bg)] text-[var(--color-text)] group-hover:bg-[var(--neon-kusa)]">CONTACT</span>
+            <span class="mt-4 font-tech text-xs tracking-widest border-2 border-[var(--color-text)] px-3 py-1 font-bold bg-[var(--color-bg)] text-[var(--color-text)] group-hover:bg-[var(--neon-kusa)]">問合せはこちら</span>
           </a>
 
           <!-- SNS -->
           <a href="https://note.com/ishikawa_x_tech" target="_blank" rel="noopener noreferrer" class="group relative w-36 h-36 md:w-44 md:h-44 bg-[var(--kaga-murasaki)] border-4 border-[var(--color-text)] flex flex-col justify-center items-center hover:bg-[var(--color-text)] transition-colors duration-300 shadow-[4px_4px_0px_var(--kaga-enji)] tech-border transform -rotate-1">
             <h3 class="font-fude text-2xl font-bold mb-2 text-center w-full border-y border-dashed border-white text-white group-hover:text-[var(--kaga-murasaki)] py-1">瓦版</h3>
-            <span class="mt-4 font-tech text-xs tracking-widest border-2 border-[var(--color-text)] px-3 py-1 font-bold bg-[var(--color-bg)] text-[var(--color-text)] group-hover:bg-[var(--neon-murasaki)]">SNS / NOTE</span>
+            <span class="mt-4 font-tech text-xs tracking-widest border-2 border-[var(--color-text)] px-3 py-1 font-bold bg-[var(--color-bg)] text-[var(--color-text)] group-hover:bg-[var(--neon-murasaki)]">情報発信はこちら</span>
+          </a>
+
+          <!-- 掲示板 (新規) -->
+          <a href="https://kanazawa.ha4go.net/" target="_blank" rel="noopener noreferrer" class="group relative w-36 h-36 md:w-44 md:h-44 bg-[var(--kaga-ai)] border-4 border-[var(--color-text)] flex flex-col justify-center items-center hover:bg-[var(--color-text)] transition-colors duration-300 shadow-[4px_4px_0px_var(--kaga-oudo)] tech-border transform rotate-1">
+            <h3 class="font-fude text-2xl font-bold mb-2 text-center w-full border-y border-dashed border-white text-white group-hover:text-[var(--kaga-ai)] py-1">掲示板</h3>
+            <span class="mt-4 font-tech text-xs tracking-widest border-2 border-[var(--color-text)] px-3 py-1 font-bold bg-[var(--color-bg)] text-[var(--color-text)] group-hover:bg-[var(--neon-ai)]">オープンチャットはこちら</span>
           </a>
 
         </div>
@@ -549,6 +555,9 @@
       const splash = document.getElementById('splashView');
       const body = document.getElementById('mainBody');
       
+      // スクロール位置を強制的にトップへリセット
+      window.scrollTo(0, 0);
+
       // ボタン連打防止
       splash.style.pointerEvents = 'none';
       splash.style.opacity = '0';
@@ -559,6 +568,7 @@
       // フェードアウト後に非表示にし、スクロールアニメーションをトリガー
       setTimeout(() => {
         splash.classList.add('view-hidden');
+        window.scrollTo(0, 0); // 念のため非表示後にもリセット
         setupIntersectionObserver();
       }, 1000);
     }
@@ -612,7 +622,9 @@
 
     // --- View Navigation & Rendering ---
     function switchView(viewName) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // 画面切り替え時は瞬時にトップへ戻す（smoothだとズレる場合があるため）
+      window.scrollTo(0, 0);
+      
       document.getElementById('homeView').classList.add('view-hidden');
       document.getElementById('dayView').classList.add('view-hidden');
       
@@ -624,6 +636,9 @@
         renderDayView(viewName);
         document.getElementById('dayView').classList.remove('view-hidden');
       }
+      
+      // DOM書き換え後にもう一度トップへ固定
+      window.scrollTo(0, 0);
       
       setTimeout(setupIntersectionObserver, 100);
     }
