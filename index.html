@@ -309,7 +309,7 @@
               <div class="flex-grow w-full">
                 <div class="flex items-center gap-4 mb-3">
                   <div class="w-12 h-12 bg-[var(--color-text)] text-[var(--kaga-oudo)] flex items-center justify-center font-fude text-2xl font-bold border-2 border-[var(--kaga-oudo)]">趣</div>
-                  <h2 class="font-fude text-2xl md:text-3xl font-bold text-[var(--color-text)]">日本酒 × TECH とは？</h2>
+                  <h2 class="font-fude text-2xl md:text-3xl font-bold text-[var(--color-text)]">日本酒 × ハッカソン とは？</h2>
                 </div>
                 <p class="text-sm font-bold text-[var(--kaga-murasaki)] border-l-2 border-[var(--kaga-murasaki)] pl-3 py-1 ml-2 tracking-widest">ハッカソンに期待すること・開催の背景</p>
               </div>
@@ -318,6 +318,26 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Entry Card (参加申し込み) -->
+        <div class="md:col-span-2 mt-4">
+          <a href="https://techplay.jp/event/989316" target="_blank" rel="noopener noreferrer" class="block cursor-pointer cyber-kifuda p-6 md:p-8 group flex flex-col justify-between" style="border-color: var(--kaga-enji);">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[var(--kaga-enji)] to-[var(--neon-enji)]"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center mt-2">
+              <div class="flex-grow w-full">
+                <div class="flex items-center gap-4 mb-3">
+                  <div class="w-12 h-12 bg-[var(--kaga-enji)] text-white flex items-center justify-center font-fude text-2xl font-bold border-2 border-[var(--kaga-enji)] group-hover:bg-white group-hover:text-[var(--kaga-enji)] transition-colors">挑</div>
+                  <h2 class="font-fude text-2xl md:text-3xl font-bold text-[var(--kaga-enji)]">挑戦者の申し込みを求む！</h2>
+                </div>
+                <p class="text-sm font-bold text-[var(--color-text)] border-l-2 border-[var(--kaga-enji)] pl-3 py-1 ml-2 tracking-widest">TECH PLAYイベントページへ遷移します</p>
+              </div>
+              <div class="text-right mt-6 md:mt-0 flex items-end">
+                <span class="text-lg font-bold text-[var(--kaga-enji)] group-hover:text-[var(--neon-enji)] transition-colors border-b-2 border-[var(--kaga-enji)] group-hover:border-[var(--neon-enji)] pb-1 whitespace-nowrap bg-white/80 px-2">いざ、参戦 ↗</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <!-- その他エリア (Contact / SNS / BBS) -->
@@ -434,7 +454,7 @@
       <div class="flex items-center justify-between mb-8 border-b-4 border-double border-[var(--color-text)] pb-4 relative z-10">
         <div>
           <span class="text-sm font-bold text-white tracking-widest block mb-2 bg-[var(--color-text)] px-3 py-1 inline-block">ごあいさつ</span>
-          <h3 class="font-fude text-2xl md:text-4xl font-bold text-[var(--color-text)]">日本酒 × TECH について</h3>
+          <h3 class="font-fude text-2xl md:text-4xl font-bold text-[var(--color-text)]">日本酒 × ハッカソン について</h3>
         </div>
         <button onclick="closeModal('aboutModal')" class="flex items-center justify-center w-12 h-12 bg-[var(--kaga-enji)] border-2 border-[var(--color-text)] hover:bg-[var(--color-text)] transition-colors group">
           <span class="text-3xl font-tech font-bold leading-none text-white">X</span>
@@ -487,8 +507,8 @@
       <div class="flex-grow bg-[#F9F8F4] m-2 border-2 border-dashed border-gray-600 relative flex items-center justify-center p-8 text-center overflow-hidden">
          <div class="flex flex-col items-center justify-center text-[var(--kaga-kusa)] relative z-10">
             <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13l2 2 4-4"></path></svg>
-            <span class="text-xl mb-2 font-bold tracking-widest border border-current px-4 py-1">絵巻物（PDF）表示領域</span>
-            <p class="text-xs opacity-70">Google Drive Viewer等のプレースホルダー</p>
+            <span class="text-xl mb-2 font-bold tracking-widest border border-current px-4 py-1">絵巻物（PDF）サンプル表示領域</span>
+            <p class="text-sm opacity-90 font-bold mt-2 text-[var(--color-text)]">※これはサンプル画面です。本番ではここにプレゼン資料（PDF）が表示されます。</p>
             <p id="pdfModalTeamName" class="text-sm mt-6 bg-[var(--kaga-enji)] text-white px-4 py-1 font-bold border border-white"></p>
          </div>
       </div>
@@ -505,7 +525,7 @@
           { time: "13:00", title: "開場・受付", desc: "受付を開始いたします。", color: "bg-[var(--kaga-oudo)]" },
           { time: "13:30", title: "オリエンテーション", desc: "即席のチームで顔合わせと自己紹介を行います。", color: "bg-[var(--kaga-ai)]" },
           { time: "14:00", title: "ハッカソン趣旨説明", desc: "「日本酒 × TECH HACKATHON」の目的・概要説明を行います。", color: "bg-[var(--kaga-enji)]" },
-          { time: "14:10", title: "インプット講話", desc: "日本酒が地域に果たす役割、最新の醸造・流通IoT事例、今後の石川県の酒蔵ツーリズムの展望について専門家が語ります。", color: "bg-[var(--kaga-kusa)]" },
+          { time: "14:10", title: "インプット講義", desc: "日本酒が地域に果たす役割、最新の醸造、酒造における課題について専門家が語ります。", color: "bg-[var(--kaga-kusa)]" },
           { time: "15:10", title: "DEEP RESEARCH", desc: "より理解を深めるために、チームに分かれてデータ分析・インタビュー・調査を行います。", color: "bg-[var(--kaga-murasaki)]" },
           { time: "16:30", title: "アイデアソン・ワークショップ", desc: "「誰の・何の課題をどうやって解決できそうか」チームごとにまとめて共有します。", color: "bg-[var(--kaga-ai)]" },
           { time: "17:00", title: "次回への申し送り", desc: "第二幕までの過ごし方の説明と、記念の集合写真撮影を行います。", color: "bg-[var(--kaga-oudo)]" }
