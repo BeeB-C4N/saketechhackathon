@@ -436,7 +436,7 @@
             虎の巻 <span class="text-xl font-tech ml-2 tracking-widest text-[var(--kaga-kusa)]">TIPS</span>
           </h3>
         </div>
-        <div class="flex flex-wrap gap-6 md:gap-8 justify-center" id="dvTips">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl mx-auto" id="dvTips">
           <!-- Tipsがここに挿入されます -->
         </div>
       </section>
@@ -511,7 +511,9 @@
          <!-- PDFがない場合のプレースホルダー -->
          <div id="pdfModalPlaceholder" class="flex flex-col items-center justify-center text-[var(--kaga-kusa)] relative z-0 w-full max-w-lg mx-auto">
             <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13l2 2 4-4"></path></svg>
-            <span class="text-xl mb-2 font-bold tracking-widest border border-current px-4 py-1">資料データがありません</span>
+            <span class="text-xl mb-2 font-bold tracking-widest border border-current px-4 py-1">絵巻物（PDF）サンプル表示領域</span>
+            <p class="text-sm opacity-90 font-bold mt-2 text-[var(--color-text)]">※これはサンプル画面です。本番ではここにプレゼン資料（PDF）が表示されます。</p>
+            <p id="pdfModalTeamName" class="text-sm mt-6 bg-[var(--kaga-enji)] text-white px-4 py-1 font-bold border border-white"></p>
          </div>
 
          <!-- 実際の資料を開くリンク (右下フロート) -->
@@ -536,9 +538,74 @@
           { time: "17:00", title: "次回への申し送り", desc: "第二幕までの過ごし方の説明と、記念の集合写真撮影を行います。", color: "bg-[var(--kaga-oudo)]" }
         ],
         tips: [
-          { text: "日本酒産業・\n酒蔵データセット2026\n(CSV / JSON)", type: "巻物", color: "bg-[var(--kaga-ai)]" },
-          { text: "国内外の\n酒蔵ツーリズム\n成功事例まとめ", type: "瓦版", color: "bg-[var(--kaga-murasaki)]" },
-          { text: "提供API\nリファレンスと\n環境構築の道標", type: "手引", color: "bg-[var(--kaga-oudo)]" }
+          // 統計データ系（藍色）
+          { 
+            title: "国税庁 統計情報", 
+            text: "都道府県別統計", 
+            type: "統計", color: "bg-[var(--kaga-ai)]", 
+            url: "https://www.nta.go.jp/publication/statistics/kokuzeicho/tokei.htm#:~:text=%E6%B6%88%E8%B2%BB%E7%A8%8E-,%E9%85%92%E7%A8%8E,-%E5%88%A9%E7%94%A8%E4%B8%8A%E3%81%AE%E6%B3%A8%E6%84%8F" 
+          },
+          { 
+            title: "農林水産省", 
+            text: "日本酒原料米について・酒造好適米等の需要量調査等", 
+            type: "統計", color: "bg-[var(--kaga-ai)]", 
+            url: "https://www.maff.go.jp/j/seisaku_tokatu/kikaku/sake.html" 
+          },
+          { 
+            title: "総務省統計局 家計調査", 
+            text: "品目別都道府県庁所在市及び政令指定都市ランキング", 
+            type: "統計", color: "bg-[var(--kaga-ai)]", 
+            url: "https://www.stat.go.jp/data/kakei/5.html" 
+          },
+          { 
+            title: "石川県酒造組合連合会", 
+            text: "公式HP（石川の酒に関する情報）", 
+            type: "情報", color: "bg-[var(--kaga-oudo)]", 
+            url: "https://www.ishikawa-sake.jp/" 
+          },
+          { 
+            title: "日本酒 蔵元・酒蔵見学検索", 
+            text: "石川県の酒蔵や酒の資料館・博物館一覧", 
+            type: "情報", color: "bg-[var(--kaga-oudo)]", 
+            url: "https://makers.japansake.or.jp/?maker=&brand=&prefecture=17" 
+          },
+          // 論文系（古代紫）
+          { 
+            title: "商学論集 第90巻 (2022)", 
+            text: "日本酒の市販酒成分調査に基づく地域特性の一考察", 
+            type: "論文", color: "bg-[var(--kaga-murasaki)]", 
+            url: "https://www.lib.fukushima-u.ac.jp/repo/repository/fukuro/R000005818/3-1942.pdf" 
+          },
+          { 
+            title: "日本フードツーリズム学会誌 (2024)", 
+            text: "発酵ツーリズムから生まれるまちづくりに関する一考察", 
+            type: "論文", color: "bg-[var(--kaga-murasaki)]", 
+            url: "https://www.jstage.jst.go.jp/article/nftj/2024/3/2024_2/_article/-char/ja/" 
+          },
+          { 
+            title: "北陸作物学会報 45巻 (2010)", 
+            text: "酒造好適米品種「石川酒52号」の育成", 
+            type: "論文", color: "bg-[var(--kaga-murasaki)]", 
+            url: "https://www.jstage.jst.go.jp/article/hokurikucs/45/0/45_KJ00006396419/_article/-char/ja/" 
+          },
+          { 
+            title: "JOURNAL OF THE BREWING SOCIETY (2009)", 
+            text: "日本酒市場の問題点―飲食市場と家庭市場の日本酒―", 
+            type: "論文", color: "bg-[var(--kaga-murasaki)]", 
+            url: "https://www.jstage.jst.go.jp/article/jbrewsocjapan/104/11/104_838/_article" 
+          },
+          { 
+            title: "商学論集 第85巻 (2017)", 
+            text: "日本酒の消費量減少の規定要因分析に基づく販売戦略の考察", 
+            type: "論文", color: "bg-[var(--kaga-murasaki)]", 
+            url: "https://www.lib.fukushima-u.ac.jp/repo/repository/fukuro/R000004998/3-1889.pdf" 
+          },
+          { 
+            title: "日本国際観光学会論文集 32巻 (2025)", 
+            text: "新潟産日本酒の海外における 地域ブランド化の推進に係る考察", 
+            type: "論文", color: "bg-[var(--kaga-murasaki)]", 
+            url: "https://www.jstage.jst.go.jp/article/jafit/32/0/32_75/_article/-char/ja/" 
+          }
         ]
       },
       day2: {
@@ -555,9 +622,9 @@
           { time: "17:30", title: "閉会の辞", desc: "総括と、喜びの記念撮影を行います。", color: "bg-[var(--kaga-murasaki)]" }
         ],
         tips: [
-          { text: "ピッチ資料作成の\n型（ひな形）と\n過去の優秀作品", type: "手本", color: "bg-[var(--kaga-oudo)]" },
-          { text: "プロトタイピングに\n役立つIoTモジュール・\nセンサー一覧", type: "道具", color: "bg-[var(--kaga-kusa)]" },
-          { text: "審査の基準と\n助言（メンタリング）\n日程", type: "掟", color: "bg-[var(--kaga-enji)]" }
+          { title: "資料テンプレート", text: "ピッチ資料作成の型（ひな形）と過去の優秀作品", type: "手本", color: "bg-[var(--kaga-oudo)]", url: "" },
+          { title: "IoTカタログ", text: "プロトタイピングに役立つIoTモジュール・センサー一覧", type: "道具", color: "bg-[var(--kaga-kusa)]", url: "" },
+          { title: "審査・メンタリング", text: "審査の基準と助言（メンタリング）日程", type: "掟", color: "bg-[var(--kaga-enji)]", url: "" }
         ],
         teams: [
           { 
@@ -746,7 +813,7 @@
         data.teams.forEach((team) => {
           const teamStr = JSON.stringify(team).replace(/"/g, '&quot;');
           const html = `
-            <div onclick="openPdfModal(${teamStr})" class="cursor-pointer bg-white p-6 md:p-8 tech-border shadow-[6px_6px_0px_var(--color-text)] hover:bg-[var(--color-text)] hover:text-white transition-colors duration-300 h-full flex flex-col group relative">
+            <div onclick="openPdfModal(${teamStr})" class="cursor-pointer bg-white p-6 md:p-8 tech-border shadow-[6px_6px_0px_var(--color-text)] hover:-translate-y-1 transition-transform duration-300 h-full flex flex-col group relative">
               <!-- ラベル風シール -->
               ${team.id ? `<div class="absolute -top-4 -left-4 w-12 h-12 ${team.bg} flex items-center justify-center font-bold text-white text-xl shadow-[2px_2px_0px_var(--color-text)]" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); transform: rotate(-10deg);">
                 ${team.id}
@@ -773,19 +840,22 @@
       const tipsContainer = document.getElementById('dvTips');
       tipsContainer.innerHTML = '';
       data.tips.forEach((tip, idx) => {
-        const delay = idx * 100;
+        const delay = (idx % 6) * 100;
         const html = `
-          <div class="fade-in-scroll" style="transition-delay: ${delay}ms">
-            <a href="#" onclick="event.preventDefault()" class="group relative w-40 h-40 md:w-48 md:h-48 bg-[var(--color-bg)] tech-border flex flex-col justify-between p-4 md:p-5 hover:-translate-y-2 transition-transform duration-300 shadow-[4px_4px_0px_var(--color-text)]">
+          <div class="fade-in-scroll h-full" style="transition-delay: ${delay}ms">
+            <a href="${tip.url || '#'}" ${tip.url ? 'target="_blank" rel="noopener noreferrer"' : 'onclick="event.preventDefault()"'} class="group relative w-full h-full min-h-[140px] bg-[var(--color-bg)] tech-border flex flex-col justify-between p-5 md:p-6 hover:-translate-y-1 transition-transform duration-300 shadow-[4px_4px_0px_var(--color-text)]">
               
               <!-- 角のアクセント -->
               <div class="absolute top-0 right-0 w-8 h-8 ${tip.color} opacity-80" style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
 
-              <p class="font-bold text-sm md:text-base leading-relaxed whitespace-pre-wrap relative z-10 text-[var(--color-text)] mt-2">${tip.text}</p>
+              <div class="relative z-10 pr-4">
+                ${tip.title ? `<h4 class="font-fude text-lg md:text-xl font-bold text-[var(--color-text)] mb-2 border-b border-dashed border-gray-400 pb-1">${tip.title}</h4>` : ''}
+                <p class="font-bold text-sm md:text-base leading-relaxed text-[var(--color-text)]">${tip.text}</p>
+              </div>
               
-              <div class="flex justify-between items-end mt-auto relative z-10">
+              <div class="flex justify-between items-end mt-4 relative z-10">
                 <span class="text-xs font-bold border border-[var(--color-text)] bg-white text-[var(--color-text)] px-2 py-0.5">${tip.type}</span>
-                <span class="text-xl font-bold text-[var(--color-text)] group-hover:text-[var(--kaga-enji)] group-hover:scale-125 transition-all duration-300">↗</span>
+                <span class="text-xl font-bold text-[var(--color-text)] group-hover:text-[var(--kaga-enji)] transition-colors">↗</span>
               </div>
             </a>
           </div>
