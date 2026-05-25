@@ -424,7 +424,7 @@
             発表目録 <span class="text-xl font-tech ml-2 tracking-widest text-[var(--kaga-ai)]">PITCH_LIST</span>
           </h3>
         </div>
-        <div class="grid grid-cols-1 gap-8 md:gap-10 max-w-2xl mx-auto" id="dvPresentations">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto" id="dvPresentations">
           <!-- チーム情報がここに挿入されます -->
         </div>
       </section>
@@ -494,25 +494,28 @@
   <!-- Presentation PDF Modal -->
   <div id="pdfModal" class="view-hidden fixed inset-0 z-50 flex items-center justify-center px-4 py-6 md:py-12 bg-[var(--color-text)]/80 backdrop-blur-md">
     <div class="absolute inset-0" onclick="closeModal('pdfModal')"></div>
-    <div class="relative w-full max-w-4xl h-full md:h-[80vh] bg-white flex flex-col modal-enter tech-border p-2 shadow-[0_0_20px_var(--kaga-ai)]">
+    <div class="relative w-full max-w-5xl h-full md:h-[90vh] bg-white flex flex-col modal-enter tech-border p-2 shadow-[0_0_20px_var(--kaga-ai)]">
       <div class="flex items-center justify-between px-4 py-3 bg-white border-b-4 border-[var(--color-text)]">
         <div>
           <span id="pdfModalTeamNameBadge" class="text-xs font-bold text-white bg-[var(--kaga-enji)] px-2 py-1"></span>
-          <h3 id="pdfModalTeamTitle" class="text-lg md:text-xl font-bold text-[var(--color-text)] mt-1"></h3>
+          <h3 id="pdfModalTeamTitle" class="text-lg md:text-xl font-bold text-[var(--color-text)] mt-1 font-fude"></h3>
         </div>
         <button onclick="closeModal('pdfModal')" class="flex items-center justify-center w-10 h-10 bg-[var(--kaga-ai)] border-2 border-[var(--color-text)] hover:bg-[var(--color-text)] transition-colors group">
           <span class="text-2xl font-tech font-bold leading-none text-white">X</span>
         </button>
       </div>
-      <div class="flex-grow bg-[#F9F8F4] m-2 border-2 border-dashed border-gray-600 relative flex items-center justify-center p-8 text-center overflow-hidden">
-         <div class="flex flex-col items-center justify-center text-[var(--kaga-kusa)] relative z-10 w-full max-w-lg mx-auto">
+      <div class="flex-grow bg-[#F9F8F4] m-2 border-2 border-dashed border-gray-600 relative flex items-center justify-center p-0 text-center overflow-hidden">
+         <!-- PDFプレビュー用 iframe -->
+         <iframe id="pdfModalIframe" src="" class="w-full h-full border-0 absolute inset-0 z-10 hidden" allow="autoplay"></iframe>
+
+         <!-- PDFがない場合のプレースホルダー -->
+         <div id="pdfModalPlaceholder" class="flex flex-col items-center justify-center text-[var(--kaga-kusa)] relative z-0 w-full max-w-lg mx-auto">
             <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13l2 2 4-4"></path></svg>
-            <span class="text-xl mb-2 font-bold tracking-widest border border-current px-4 py-1">絵巻物（PDF）サンプル表示領域</span>
-            <p class="text-sm opacity-90 font-bold mt-2 text-[var(--color-text)]">※これはサンプル画面です。本番ではここにプレゼン資料（PDF）が表示されます。</p>
-            <p id="pdfModalTeamName" class="text-sm mt-6 bg-[var(--kaga-enji)] text-white px-4 py-1 font-bold border border-white"></p>
-            
-            <a id="pdfModalLink" href="#" target="_blank" rel="noopener noreferrer" class="mt-8 bg-[var(--color-text)] text-white border-2 border-[var(--color-text)] px-6 py-3 font-tech font-bold hover:bg-[var(--kaga-enji)] transition-colors shadow-[4px_4px_0px_var(--color-text)] w-full">実際の資料（PDF）を開く ↗</a>
+            <span class="text-xl mb-2 font-bold tracking-widest border border-current px-4 py-1">資料データがありません</span>
          </div>
+
+         <!-- 実際の資料を開くリンク (右下フロート) -->
+         <a id="pdfModalLink" href="#" target="_blank" rel="noopener noreferrer" class="absolute bottom-4 right-4 bg-[var(--color-text)] text-white border-2 border-[var(--color-text)] px-6 py-3 font-tech font-bold hover:bg-[var(--kaga-enji)] transition-colors shadow-[4px_4px_0px_var(--color-text)] z-20">実際の資料（PDF）を開く ↗</a>
       </div>
     </div>
   </div>
@@ -558,11 +561,22 @@
         ],
         teams: [
           { 
-            name: "チームサンプル", 
+            id: "1",
+            name: "チームサンプル 1", 
             title: "（サンプル）VR酒蔵体験 in 櫻田酒造", 
             desc: "VR空間で時空を超えた杜氏の“想い”を体験し、ファンを作る。購買に繋げる。", 
             bg: "bg-[var(--kaga-enji)]",
-            link: "https://drive.google.com/file/d/1JVY12Wk1x8MQOvJ4p5CGvesXR__CN-kz/view?usp=sharing"
+            link: "https://drive.google.com/file/d/1JVY12Wk1x8MQOvJ4p5CGvesXR__CN-kz/view?usp=sharing",
+            embedLink: "https://drive.google.com/file/d/1JVY12Wk1x8MQOvJ4p5CGvesXR__CN-kz/preview"
+          },
+          { 
+            id: "2",
+            name: "チームサンプル 2", 
+            title: "（サンプル）VR酒蔵体験 in 櫻田酒造", 
+            desc: "VR空間で時空を超えた杜氏の“想い”を体験し、ファンを作る。購買に繋げる。", 
+            bg: "bg-[var(--kaga-ai)]",
+            link: "https://drive.google.com/file/d/1JVY12Wk1x8MQOvJ4p5CGvesXR__CN-kz/view?usp=sharing",
+            embedLink: "https://drive.google.com/file/d/1JVY12Wk1x8MQOvJ4p5CGvesXR__CN-kz/preview"
           }
         ]
       }
@@ -733,6 +747,11 @@
           const teamStr = JSON.stringify(team).replace(/"/g, '&quot;');
           const html = `
             <div onclick="openPdfModal(${teamStr})" class="cursor-pointer bg-white p-6 md:p-8 tech-border shadow-[6px_6px_0px_var(--color-text)] hover:bg-[var(--color-text)] hover:text-white transition-colors duration-300 h-full flex flex-col group relative">
+              <!-- ラベル風シール -->
+              ${team.id ? `<div class="absolute -top-4 -left-4 w-12 h-12 ${team.bg} flex items-center justify-center font-bold text-white text-xl shadow-[2px_2px_0px_var(--color-text)]" style="clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); transform: rotate(-10deg);">
+                ${team.id}
+              </div>` : ''}
+
               <div class="flex items-center justify-between mb-4 mt-2">
                 <span class="font-bold border border-current px-2 py-0.5 text-xs tracking-widest bg-[var(--color-bg)] text-[var(--color-text)]">${team.name}</span>
               </div>
@@ -779,20 +798,45 @@
     function openModal(modalId) {
       document.getElementById(modalId).classList.remove('view-hidden');
     }
+    
     function closeModal(modalId) {
       document.getElementById(modalId).classList.add('view-hidden');
+      if (modalId === 'pdfModal') {
+        const iframeEl = document.getElementById('pdfModalIframe');
+        if (iframeEl) iframeEl.src = ""; // iframeの読み込みを停止・リセット
+      }
     }
+    
     function openPdfModal(teamData) {
       document.getElementById('pdfModalTeamNameBadge').textContent = teamData.name;
       document.getElementById('pdfModalTeamTitle').textContent = teamData.title;
-      document.getElementById('pdfModalTeamName').textContent = `【 ${teamData.name} 】 発表資料`;
 
       const linkEl = document.getElementById('pdfModalLink');
-      if(teamData.link) {
+      const iframeEl = document.getElementById('pdfModalIframe');
+      const placeholderEl = document.getElementById('pdfModalPlaceholder');
+
+      // リンクが設定されている場合
+      if (teamData.link) {
         linkEl.href = teamData.link;
         linkEl.style.display = 'inline-block';
+        
+        // embedLink（埋め込み用プレビューURL）があればiframeを表示
+        if (teamData.embedLink) {
+          iframeEl.src = teamData.embedLink;
+          iframeEl.classList.remove('hidden');
+          if (placeholderEl) placeholderEl.classList.add('hidden');
+        } else {
+          // なければプレースホルダーを表示
+          iframeEl.classList.add('hidden');
+          iframeEl.src = "";
+          if (placeholderEl) placeholderEl.classList.remove('hidden');
+        }
       } else {
+        // リンクが一切ない場合
         linkEl.style.display = 'none';
+        iframeEl.classList.add('hidden');
+        iframeEl.src = "";
+        if (placeholderEl) placeholderEl.classList.remove('hidden');
       }
 
       openModal('pdfModal');
