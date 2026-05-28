@@ -448,27 +448,44 @@
   <!-- About Modal -->
   <div id="aboutModal" class="view-hidden fixed inset-0 z-50 flex items-center justify-center px-4 py-6 md:py-12 bg-[var(--color-text)]/80 backdrop-blur-md">
     <div class="absolute inset-0" onclick="closeModal('aboutModal')"></div>
-    <div class="relative w-full max-w-3xl bg-white flex flex-col modal-enter tech-border p-6 md:p-12 shadow-[0_0_20px_var(--kaga-oudo)]">
+    <div class="relative w-full max-w-3xl bg-white flex flex-col modal-enter tech-border p-6 md:p-12 shadow-[0_0_20px_var(--kaga-oudo)] max-h-[90vh] overflow-y-auto">
       <div class="absolute inset-2 border-2 border-[var(--color-text)] pointer-events-none border-dashed opacity-50"></div>
       
-      <div class="flex items-center justify-between mb-8 border-b-4 border-double border-[var(--color-text)] pb-4 relative z-10">
+      <div class="flex items-center justify-between mb-8 border-b-4 border-double border-[var(--color-text)] pb-4 relative z-10 flex-shrink-0">
         <div>
           <span class="text-sm font-bold text-white tracking-widest block mb-2 bg-[var(--color-text)] px-3 py-1 inline-block">ごあいさつ</span>
           <h3 class="font-fude text-2xl md:text-4xl font-bold text-[var(--color-text)]">日本酒 × ハッカソン について</h3>
         </div>
-        <button onclick="closeModal('aboutModal')" class="flex items-center justify-center w-12 h-12 bg-[var(--kaga-enji)] border-2 border-[var(--color-text)] hover:bg-[var(--color-text)] transition-colors group">
+        <button onclick="closeModal('aboutModal')" class="flex items-center justify-center w-12 h-12 bg-[var(--kaga-enji)] border-2 border-[var(--color-text)] hover:bg-[var(--color-text)] transition-colors group flex-shrink-0">
           <span class="text-3xl font-tech font-bold leading-none text-white">X</span>
         </button>
       </div>
       
-      <div class="flex-grow relative text-[var(--color-text)] leading-loose text-lg md:text-xl z-10">
-        <p class="mb-6">
-          <span class="font-bold text-[var(--kaga-enji)] text-2xl mr-1 border-b-2 border-[var(--kaga-enji)]">日本酒</span>に関するデータや文化を使って、<br class="hidden md:block">
-          <span class="bg-[var(--kaga-oudo)]/40 px-2 font-bold">石川県の未来の技術を考える</span>イベントです。
+      <div class="flex-grow relative text-[var(--color-text)] leading-loose text-base md:text-lg z-10">
+        <p class="mb-4">
+          石川県は全国有数の酒どころ。<br>
+          伝統の蔵が醸す文化は、この地のアイデンティティそのものだ。
         </p>
-        <p class="mb-6 bg-gray-100 p-4 border-l-4 border-[var(--color-text)] text-base">日本酒は「飲む」だけにとどまらず、観光・農業・健康・文化・地域創生と、様々な分野に発展できる可能性を秘めています。</p>
-        <p class="font-bold text-[var(--kaga-ai)]">本イベントでは、単なる醸造・流通の課題解決にとどまらず、そこから広がる石川県の豊かな未来をテクノロジーの力で創り出す、自由で斬新なアイデアをお待ちしています！</p>
-        <div class="mt-12 text-center md:text-right font-fude text-4xl text-[var(--kaga-enji)] tracking-widest drop-shadow-sm">いざ、醸さん！</div>
+        <p class="mb-6 bg-gray-100 p-4 border-l-4 border-[var(--kaga-enji)] text-base font-bold">
+          しかし今、担い手不足・地震被害・飲酒人口の減少など、時代の波が酒蔵産業に押し寄せている。
+        </p>
+        <p class="mb-6">
+          このハッカソンでは、蔵元が直接参加。現場のリアルな声とデータを基点に、<br>
+          エンジニア・デザイナー・学生・社会人がチームを組んで課題解決に挑む。<br>
+          <span class="font-bold text-[var(--kaga-ai)]">アプリ開発・データ可視化・生成AI・バイブコーディング―――</span><br>
+          あなたのアイデアと技術で、石川の日本酒の未来を切り開こう！<br>
+          特別な経験は不要。興味と意志があれば、学生でも社会人でも、チームでも個人でも、どなたでも参加できます。
+        </p>
+        
+        <ul class="mb-6 space-y-2 font-bold text-[var(--kaga-murasaki)] pl-2">
+          <li>・酒蔵のバックオフィス業務のDX？</li>
+          <li>・いしかわの日本酒の認知度向上アプリ？</li>
+          <li>・ゲームで日本酒を知ってもらう？</li>
+          <li>・VR・ARで異世界へ誘う？</li>
+          <li>・デジタルでの新しいブランディング？</li>
+        </ul>
+
+        <div class="mt-8 text-center md:text-right font-fude text-4xl text-[var(--kaga-enji)] tracking-widest drop-shadow-sm">いざ、醸さん！</div>
       </div>
     </div>
   </div>
